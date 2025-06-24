@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Module", // デバッグ構成の名前（自分でわかりやすいものに）
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.main", // ★★★ ここが最重要ポイント ★★★
+      "justMyCode": true
+    }
+  ]
+}
