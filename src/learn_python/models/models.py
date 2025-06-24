@@ -1,6 +1,6 @@
-from typing import TypedDict
+from pydantic import BaseModel
 
-class Post(TypedDict):
+class Post(BaseModel):
     """
     JSONPlaceholderの投稿データを表す。
     """

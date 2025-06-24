@@ -12,4 +12,7 @@ def fetch_posts() -> list[Post]:
     """
     response = requests.get(f"{_API_BASE_URL}/posts")
     response.raise_for_status()  # Raise an error for bad responses
-    return response.json()
+
+    raw_post_data = response.json()
+    posts = [Post.model_validate(post) for post in raw_post_data]
+    return posts

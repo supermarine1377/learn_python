@@ -4,7 +4,7 @@ def main():
   try:
     posts = fetch_posts()
     for post in posts:
-        print(f"Title: {post['title']}, Body: {post['body']}")
+        print(f"Title: {post.title}, Body: {post.body}")
   except Exception as e:
     print(f"Error fetching posts: {e}")
 
