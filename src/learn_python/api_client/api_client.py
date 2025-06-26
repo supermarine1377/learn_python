@@ -1,18 +1,24 @@
 import requests
-from src.learn_python.models.models import Post
-
-_API_BASE_URL = "https://jsonplaceholder.typicode.com"
-
-def fetch_posts() -> list[Post]:
+from learn_python.models.models import Post
+class APIClient:
     """
-    Fetches posts from the JSONPlaceholder API.
+    A client for interacting with the JSONPlaceholder API.
+    """
+    def __init__(self, base_url: str):
+        self._base_url = base_url
+        self._session = requests.Session()
     
-    Returns:
-        list[Post]: A list of posts.
-    """
-    response = requests.get(f"{_API_BASE_URL}/posts")
-    response.raise_for_status()  # Raise an error for bad responses
+    def fetch_posts(self) -> list[Post]:
+        """
+        Fetches posts from the JSONPlaceholder API.
+        
+        Returns:
+            list[Post]: A list of posts.
+        """
+        response = self._session.get(f"{self._base_url}/posts")
+        response.raise_for_status()
 
-    raw_post_data = response.json()
-    posts = [Post.model_validate(post) for post in raw_post_data]
-    return posts
+        raw_post_data = response.json()
+        posts = [Post.model_validate(post) for post in raw_post_data]
+
+        return posts
