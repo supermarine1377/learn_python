@@ -1,6 +1,6 @@
 import pytest
 from pytest_mock import MockerFixture
-from learn_python.api_client.api_client import APIClient
+from learn_python.api_client.api_client import ApiClient
 from learn_python.models.models import Post
 import requests
 
@@ -22,7 +22,7 @@ def test_get_posts_success(mocker: MockerFixture):
     return_value=mock_response
   )
 
-  client = APIClient(base_url=dummy_api_url)
+  client = ApiClient(base_url=dummy_api_url)
   posts = client.fetch_posts()
 
   assert len(posts) == 2
@@ -47,7 +47,7 @@ def test_get_posts_failure(mocker: MockerFixture):
     return_value=mock_response
   )
 
-  client = APIClient(base_url=dummy_api_url)
+  client = ApiClient(base_url=dummy_api_url)
 
   with pytest.raises(requests.exceptions.HTTPError):
     client.fetch_posts()
