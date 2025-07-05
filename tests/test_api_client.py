@@ -1,7 +1,7 @@
 import pytest
 from pytest_mock import MockerFixture
-from learn_python.api_client.api_client import ApiClient
-from learn_python.models.models import Post
+from api_client.api_client import ApiClient
+from models.models import Post
 import requests
 
 dummy_api_url = "http://dummy.com"

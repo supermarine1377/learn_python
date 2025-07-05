@@ -1,7 +1,7 @@
 from unittest.mock import patch,mock_open
 
 import pytest
-from learn_python.writers.csv import CsvWriter
+from writers.csv import CsvWriter
 
 @pytest.fixture
 def sample_data():
@@ -19,7 +19,7 @@ def csv_writer_instance():
 def test_write_success(csv_writer_instance, sample_data):
     m = mock_open()
 
-    with patch('learn_python.writers.csv.open', m):
+    with patch('writers.csv.open', m):
         csv_writer_instance.write('test.csv', sample_data)
     m.assert_called_once_with('test.csv', 'w')
 

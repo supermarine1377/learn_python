@@ -1,5 +1,5 @@
 import requests
-from learn_python.models.models import Post
+from models.models import Post
 class ApiClient:
     """
     A client for interacting with the JSONPlaceholder API.
